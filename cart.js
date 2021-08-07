@@ -7,7 +7,7 @@ function addToCart(){
     curProduct.price = parseFloat($(this).siblings("p").find("span").eq(0).html());
     curProduct.quantity = 1;
     let inCart = false;
-    console.log(curProduct.name,' ',curProduct.price);
+ //   console.log(curProduct.name,' ',curProduct.price);
     for(item of shoppingCart){
         if(item.name == curProduct.name){
             item.quantity++;
@@ -20,29 +20,35 @@ function addToCart(){
     updateCart();
 }
 
+const taxRate = 1.1;
 
 function updateCart(){
     shoppingCartContainer.empty();
     let overallNum = 0;
     for(let item of shoppingCart){
         let itemTotalPrice = item.price*item.quantity;
-        let element = $('<p class="item"></p>').html('<button class="btn btn-success">+</button><button class="btn btn-danger">-</button>'+'<span>'+item.name+'</span> '+item.quantity+' '+itemTotalPrice.toFixed(2));
+        let element = $('<p class="item"></p>').html('<button class="btn btn-success">+</button><button class="btn btn-danger">-</button>'+'<span>'+item.name+'</span> x '+item.quantity+', total: $'+itemTotalPrice.toFixed(2));
         element.appendTo(shoppingCartContainer);
-        /*element.addClass("current");
-        $(".current").click(changeQuantity);
-        element.removeClass("current");*/
         overallNum += itemTotalPrice;
     }
     $(".item button").click(changeQuantity);
-    let overall = $('<p>Total: '+overallNum.toFixed(2)+'</p>');
+    let overall = $('<p>Total: $'+overallNum.toFixed(2)+'</p>');
     overall.appendTo(shoppingCartContainer);
+    let tax = $('<p>Tax: $'+(overallNum*(taxRate - 1)).toFixed(2)+'</p>');
+    tax.appendTo(shoppingCartContainer);
+    overallNum *= taxRate;
+    let overallWithTax = $('<p>Total with tax: $'+overallNum.toFixed(2)+'</p>');
+    overallWithTax.appendTo(shoppingCartContainer);
+    let buyButton = $('<button class="btn btn-primary">Buy</button>');
+    buyButton.prop('disabled',false);
+    if(shoppingCart.length == 0){buyButton.prop('disabled',true);}
+    buyButton.appendTo(shoppingCartContainer);
 }
 
 function removeFromCart(CartItemName){
     for(let item of shoppingCart){
         if(item.name == CartItemName){
             let itemIndex = shoppingCart.indexOf(item);
-            console.log(itemIndex);
             shoppingCart.splice(itemIndex,1);
             break;
         }
