@@ -1,6 +1,8 @@
 $("button").click(addToCart);
 let shoppingCart = [];
 let shoppingCartContainer = $(".cart");
+
+//Adding item to cart
 function addToCart(){
     let curProduct = {};
     curProduct.name = $(this).siblings("h2").eq(0).html();
@@ -21,7 +23,7 @@ function addToCart(){
 }
 
 const taxRate = 1.1;
-
+//Updating cart when user adding/removing smth
 function updateCart(){
     shoppingCartContainer.empty();
     let overallNum = 0;
@@ -44,7 +46,7 @@ function updateCart(){
     if(shoppingCart.length == 0){buyButton.prop('disabled',true);}
     buyButton.appendTo(shoppingCartContainer);
 }
-
+//removing item from cart
 function removeFromCart(CartItemName){
     for(let item of shoppingCart){
         if(item.name == CartItemName){
@@ -54,7 +56,7 @@ function removeFromCart(CartItemName){
         }
     }
 }
-
+//changing quantity of selected item
 function changeQuantity(){
     for(let item of shoppingCart){
         let CartItemName = $(this).siblings("span").eq(0).html();
