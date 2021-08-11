@@ -1,4 +1,4 @@
-$("button").click(addToCart);
+$(".add-button").click(addToCart);
 let shoppingCart = [];
 let shoppingCartContainer = $(".cart");
 
@@ -43,6 +43,7 @@ function updateCart(){
     overallWithTax.appendTo(shoppingCartContainer);
     let buyButton = $('<button class="btn btn-primary">Buy</button>');
     buyButton.prop('disabled',false);
+    buyButton.attr('data-toggle','modal').attr('data-target','#buy-window');
     if(shoppingCart.length == 0){buyButton.prop('disabled',true);}
     buyButton.appendTo(shoppingCartContainer);
 }
@@ -75,4 +76,9 @@ function changeQuantity(){
             updateCart();
         }
     }
+}
+function completeOrder(){
+    shoppingCart = [];
+    shoppingCartContainer.empty();
+    alert("Order succesful!")
 }

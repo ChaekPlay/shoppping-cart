@@ -30,7 +30,7 @@
             <h2>Milk</h2>
             <p>A bit sweet, 1L</p>
             <p>$<span>2.99</span></p>
-            <button type="submit" class="btn btn-primary mr-b">Add to cart</button>
+            <button type="submit" class="btn btn-primary mr-b add-button">Add to cart</button>
           </div>
           <div class="col col-xs-12 col-md-6 col-lg-4">
             <div>
@@ -39,7 +39,7 @@
             <h2>Bread</h2>
             <p>From the bakery</p>
             <p>$<span>1.99</span></p>
-            <button type="submit" class="btn btn-primary mr-b">Add to cart</button>
+            <button type="submit" class="btn btn-primary mr-b add-button">Add to cart</button>
           </div>
           <div class="col col-xs-12 col-md-6 col-lg-4">
             <div>
@@ -48,7 +48,7 @@
             <h2>Eggs</h2>
             <p>10 of them</p>
             <p>$<span>4.99</span></p>
-            <button type="submit" class="btn btn-primary mr-b">Add to cart</button>
+            <button type="submit" class="btn btn-primary mr-b add-button">Add to cart</button>
           </div>
           <div class="col col-xs-12 col-md-6 col-lg-4">
             <div>
@@ -57,7 +57,7 @@
             <h2>Newspaper</h2>
             <p>For your region</p>
             <p>$<span>0.99</span></p>
-            <button type="submit" class="btn btn-primary mr-b">Add to cart</button>
+            <button type="submit" class="btn btn-primary mr-b add-button">Add to cart</button>
           </div>
           <div class="col col-xs-12 col-md-6 col-lg-4">
             <div>
@@ -66,7 +66,7 @@
             <h2>Tomatoes</h2>
             <p>Fresh and juicy, 1kg</p>
             <p>$<span>1.99</span></p>
-            <button type="submit" class="btn btn-primary mr-b">Add to cart</button>
+            <button type="submit" class="btn btn-primary mr-b add-button">Add to cart</button>
           </div>
           <div class="col col-xs-12 col-md-6 col-lg-4">
             <div>
@@ -75,7 +75,7 @@
             <h2>Meat</h2>
             <p>Good quality, 1kg</p>
             <p>$<span>7.99</span></p>
-            <button type="submit" class="btn btn-primary mr-b">Add to cart</button>
+            <button type="submit" class="btn btn-primary mr-b add-button">Add to cart</button>
           </div>
           <div class="col col-xs-12 col-md-6 col-lg-4">
             <div>
@@ -84,7 +84,7 @@
             <h2>Cookies</h2>
             <p>Sweet</p>
             <p>$<span>1.99</span></p>
-            <button type="submit" class="btn btn-primary mr-b">Add to cart</button>
+            <button type="submit" class="btn btn-primary mr-b add-button">Add to cart</button>
           </div>
           <div class="col col-xs-12 col-md-6 col-lg-4">
             <div>
@@ -93,7 +93,7 @@
             <h2>Water</h2>
             <p>From the clean source, 1L</p>
             <p>$<span>0.99</span></p>
-            <button type="submit" class="btn btn-primary mr-b">Add to cart</button>
+            <button type="submit" class="btn btn-primary mr-b add-button">Add to cart</button>
           </div>
           <div class="col col-xs-12 col-md-6 col-lg-4">
             <div>
@@ -102,7 +102,7 @@
             <h2>Juice</h2>
             <p>1L of apple juice</p>
             <p>$<span>1.99</span></p>
-            <button type="submit" class="btn btn-primary mr-b">Add to cart</button>
+            <button type="submit" class="btn btn-primary mr-b add-button">Add to cart</button>
           </div>
 
         </div>
@@ -112,6 +112,40 @@
         <div class="cart">
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="buy-window">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLongTitle">Confirm order</h5>
+          
+      </div>
+      <form method="POST">
+        <div class="input-group">
+          <label for="first-name">First name</label>
+          <input type="text" class="form-control" placeholder="First name" aria-describedby="first-name" required="required">
+        </div>
+        <div class="input-group">
+          <label for="last-name">Last name</label>
+          <input type="text" class="form-control" placeholder="Last name" aria-describedby="last-name" required="required">
+        </div>
+        <div class="input-group">
+          <label for="phone-number">Phone number</label>
+        <input type="tel" class="form-control" name="phone" id="phone" aria-describedby="phone-number" required="required" pattern="^([+]?\d{1,2}[-\s]?|)\d{3}[-\s]?\d{3}[-\s]?\d{4}$">
+        </div>
+        <div class="input-group">
+          <label for="address">Address</label>
+        <input type="text" class="form-control" name="address" id="address" aria-describedby="address" required="required">
+        </div>
+     
+      <div class="modal-footer">
+        <button type="submit" onclick="completeOrder()" class="btn btn-primary buy-button" data-dismiss="modal">Buy</button>
+      </div>
+    </form>
     </div>
   </div>
 </div>
